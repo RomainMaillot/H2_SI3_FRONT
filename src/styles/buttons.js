@@ -12,19 +12,31 @@ const main = styled(Link)`
     padding: 1% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    background: ${colors.lightGreen};
-    box-shadow: 0 6px ${colors.darkGreen};
+    background: ${props => props.primary ? colors.lightGreen : colors.lightOrange};
+    box-shadow: 0 6px ${props => props.primary ? colors.darkGreen : colors.darkOrange};
     position: relative;
     &:hover {
-        box-shadow: 0 4px ${colors.darkGreen};
+        box-shadow: 0 4px ${props => props.primary ? colors.darkGreen : colors.darkOrange};
         top: 2px;
     }
     &:active {
-        box-shadow: 0 0 ${colors.darkGreen};
+        box-shadow: 0 0 ${props => props.primary ? colors.darkGreen : colors.darkOrange};
         top: 6px;
     }
 `
 
+const arrow = styled(Link)`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    left: 5%;
+`
+
 export {
-    main
+    main,
+    arrow
 }

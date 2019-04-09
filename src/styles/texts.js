@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { colors, sizes } from './constants'
+import { sizes } from './constants'
 
-const hugetitle = styled.h1`
-    font-size: ${sizes.hugeTitle};
+const title = styled.h1`
+    font-size: ${props => props.huge ? sizes.hugeTitle : sizes.title};
     color: white;
     text-transform: uppercase;
     margin: 0;
@@ -14,6 +14,6 @@ const text = styled.p`
 `
 
 export {
-    hugetitle,
+    title,
     text
 }

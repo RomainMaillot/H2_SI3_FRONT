@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { texts, buttons, containers } from '../styles';
+import { texts, containers } from '../styles'
 import Request from '../utils/Request'
+import { Header } from '../components'
 
 export default class Home extends Component {
     constructor(props) {
@@ -14,13 +15,9 @@ export default class Home extends Component {
 
     render() {
         return (
-            <containers.home>
-                <texts.title>pop quiz</texts.title>
-                <texts.text>Le quiz multijoueur 100 % pop culture !</texts.text>
-                <buttons.main>
-                    Commencer la partie !
-                </buttons.main>
-            </containers.home>
+            <containers.ranking>
+                <Header />
+            </containers.ranking>
         )
     }
 }

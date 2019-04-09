@@ -15,10 +15,13 @@ export default class Home extends Component {
     render() {
         return (
             <containers.home>
-                <texts.hugetitle>pop quiz</texts.hugetitle>
+                <texts.title huge>pop quiz</texts.title>
                 <texts.text>Le quiz multijoueur 100 % pop culture !</texts.text>
-                <buttons.main to="./room">
+                <buttons.main primary to="./room">
                     Commencer la partie !
+                </buttons.main>
+                <buttons.main to="./ranking">
+                    Voir classement
                 </buttons.main>
             </containers.home>
         )
