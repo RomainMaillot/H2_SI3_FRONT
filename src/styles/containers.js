@@ -50,6 +50,16 @@ const room = styled.div`
         padding: 6vh 9vw;
         box-sizing: border-box;
     }
+    .timer {
+        position: absolute;
+        bottom: 60vh;
+        left: 0;
+        height: 5px;
+        width: 100vw;
+        background: ${colors.green};
+        transform-origin: left;
+        transition: 0.1s linear;
+    }
 `
 const ranking = styled.div`
     margin: 0 auto;

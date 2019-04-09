@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { buttons, containers } from '../styles'
 
 
-export default class Header extends Component {
+export default class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
