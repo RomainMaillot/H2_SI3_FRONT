@@ -78,10 +78,41 @@ const arrow = styled(Link)`
     position: absolute;
     left: 5%;
 `
+const cross = styled(Link)`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+`
+const question = styled.button`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background: ${props => props.mainColor || colors.grey};
+    box-shadow: 0 6px ${props => props.secondaryColor || colors.lightGrey};
+    width: 40vw;
+    height: 20vh;
+    color: white;
+    font-size: ${sizes.question}
+    border-radius: 3px;
+    position: relative;
+    &:hover {
+        box-shadow: 0 4px ${props => props.secondaryColor || colors.lightGrey};
+        top: 2px;
+    }
+    &:active {
+        box-shadow: 0 0 ${props => props.secondaryColor || colors.lightGrey};
+        top: 6px;
+    }
+`
 
 export {
     main,
     arrow,
     link,
-    input
+    input,
+    cross,
+    question
 }

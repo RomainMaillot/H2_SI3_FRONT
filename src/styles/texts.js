@@ -16,9 +16,15 @@ const score = styled.p`
     color: ${colors.green};
     font-weight: bold;
 `
+const user = styled.p`
+    color: white;
+    font-size: ${sizes.button};
+    font-weight: 600;
+`
 
 export {
     title,
     text,
-    score
+    score,
+    user
 }

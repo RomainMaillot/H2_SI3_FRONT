@@ -17,6 +17,40 @@ const home = styled.div`
         margin-top: 2%;
     }
 `
+const room = styled.div`
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    background-color: ${colors.blue};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    header {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        justify-content: space-between;
+    }
+    >p {
+        margin-top: 5vh;
+        width: 60%;
+        text-align: center;
+    }
+    main {
+        background: white;
+        width: 100%;
+        height: 60vh;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 6vh 9vw;
+        box-sizing: border-box;
+    }
+`
 const ranking = styled.div`
     margin: 0 auto;
     width: 100%;
@@ -100,5 +134,6 @@ export {
     ranking,
     header,
     form,
-    user
+    user,
+    room
 }

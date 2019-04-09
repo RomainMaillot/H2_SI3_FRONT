@@ -19,7 +19,8 @@ const sizes = {
     button: '1rem',
     hugeTitle: '8rem',
     title: '2rem',
-    text: '1.5rem'
+    text: '1.5rem',
+    question: '1.25rem'
 }
 
 export {
