@@ -3,7 +3,28 @@ import { colors, sizes } from './constants'
 import { Link } from 'react-router-dom'
 
 // Creating style of the component
-const main = styled(Link)`
+const main = styled.button`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 1% 3%;
+    font-size: ${sizes.button};
+    color: #FFFFFF;
+    background: ${props => props.yellow ? colors.lightYellow : colors.lightPurple};
+    box-shadow: 0 6px ${props => props.yellow ? colors.darkYellow : colors.darkPurple};
+    position: relative;
+    &:hover {
+        box-shadow: 0 4px ${props => props.yellow ? colors.darkYellow : colors.darkPurple};
+        top: 2px;
+    }
+    &:active {
+        box-shadow: 0 0 ${props => props.yellow ? colors.darkYellow : colors.darkPurple};
+        top: 6px;
+    }
+`
+const link = styled(Link)`
     border: none;
     cursor: pointer;
     outline: none;
@@ -24,6 +45,28 @@ const main = styled(Link)`
         top: 6px;
     }
 `
+const input = styled.input`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 1% 3%;
+    font-size: ${sizes.button};
+    color: #FFFFFF;
+    width: 20%
+    background: ${colors.lightGreen};
+    box-shadow: 0 6px ${colors.darkGreen};
+    position: relative;
+    &:hover {
+        box-shadow: 0 4px ${colors.darkGreen};
+        top: 2px;
+    }
+    &:active {
+        box-shadow: 0 0 ${colors.darkGreen};
+        top: 6px;
+    }
+`
 
 const arrow = styled(Link)`
     border: none;
@@ -38,5 +81,7 @@ const arrow = styled(Link)`
 
 export {
     main,
-    arrow
+    arrow,
+    link,
+    input
 }

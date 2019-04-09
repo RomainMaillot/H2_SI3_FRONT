@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { sizes } from './constants'
+import { sizes, colors } from './constants'
 
 const title = styled.h1`
     font-size: ${props => props.huge ? sizes.hugeTitle : sizes.title};
@@ -12,8 +12,13 @@ const text = styled.p`
     color: white;
     margin: 0;
 `
+const score = styled.p`
+    color: ${colors.green};
+    font-weight: bold;
+`
 
 export {
     title,
-    text
+    text,
+    score
 }

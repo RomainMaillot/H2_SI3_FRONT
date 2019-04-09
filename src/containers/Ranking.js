@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { texts, containers } from '../styles'
 import Request from '../utils/Request'
-import { Header } from '../components'
+import { Header, User } from '../components'
 
 export default class Home extends Component {
     constructor(props) {
@@ -17,6 +16,31 @@ export default class Home extends Component {
         return (
             <containers.ranking>
                 <Header />
+                <div className="users">
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                    <User id="1" user="Borthold" score="250" />
+                </div>
             </containers.ranking>
         )
     }
