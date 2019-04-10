@@ -20,7 +20,7 @@ export default class Start extends Component {
                 <buttons.link primary to="./room">
                     Commencer la partie !
                 </buttons.link>
-                <buttons.link mainColor="#E67E22" secondaryColor="#D35400" to="./ranking">
+                <buttons.link main="#E67E22" secondary="#D35400" to="./ranking">
                     Voir classement
                 </buttons.link>
             </containers.start>
