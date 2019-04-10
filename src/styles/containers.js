@@ -93,23 +93,17 @@ const header = styled.header`
 `
 const form = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     width: 50%;
     margin-top: 5%;
     height: 20%;
-    .show {
-        transform: translateX(0);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-    }
     label {
         width: 80%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         color: white;
         font-size: ${sizes.button};
         margin: 2vh 0;

@@ -26,7 +26,6 @@ const main = styled.button`
     }
 `
 const link = styled(Link)`
-    min-width: 200px;
     border: none;
     cursor: pointer;
     outline: none;
@@ -47,16 +46,17 @@ const link = styled(Link)`
         top: 6px;
     }
 `
-const input = styled.input`
+const input = styled.div`
     border: none;
     cursor: pointer;
     outline: none;
     text-decoration: none;
+    text-align: center;
     border-radius: 3px;
     padding: 2% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    width: 40%
+    width: 40%;
     background: ${colors.lightGreen};
     box-shadow: 0 6px ${colors.darkGreen};
     margin-top: 2vh;
