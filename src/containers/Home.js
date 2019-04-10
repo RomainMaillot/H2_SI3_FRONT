@@ -21,7 +21,7 @@ export default class Home extends Component {
                 <buttons.link primary to="./room">
                     Commencer la partie !
                 </buttons.link>
-                <buttons.link to="./ranking">
+                <buttons.link mainColor="#E67E22" secondaryColor="#D35400" to="./ranking">
                     Voir classement
                 </buttons.link>
             </containers.home>

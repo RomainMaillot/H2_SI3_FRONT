@@ -115,6 +115,7 @@ const form = styled.div`
         outline: none;
         text-decoration: none;
         border-radius: 3px;
+        padding-left: 10px;
         font-size: ${sizes.button};
     }
 `
@@ -138,6 +139,28 @@ const user = styled.div`
         }
     }
 `
+const score = styled.div`
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    background-color: ${colors.blue};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        margin-bottom: 5vh;
+    }
+    p:nth-of-type(1) {
+        margin-bottom: 3vh;
+        span {
+            font-weight: bold;
+        }
+    }
+    a {
+        margin-bottom: 2vh;
+    }
+`
 
 export {
     home,
@@ -145,5 +168,6 @@ export {
     header,
     form,
     user,
-    room
+    room,
+    score
 }

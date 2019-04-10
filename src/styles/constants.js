@@ -4,8 +4,6 @@ const colors = {
     green: '#2ECC71',
     lightGreen: '#2ECC71',
     darkGreen: '#27AE60',
-    lightOrange: '#E67E22',
-    darkOrange: '#D35400',
     lightYellow: '#F1C40F',
     darkYellow: '#F39C12',
     lightPurple: '#9B59B6',

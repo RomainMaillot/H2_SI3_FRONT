@@ -6,6 +6,7 @@ const title = styled.h1`
     color: white;
     text-transform: uppercase;
     margin: 0;
+    font-family: 'Staatliches', cursive;;
 `
 const text = styled.p`
     font-size: ${sizes.text};
@@ -21,10 +22,20 @@ const user = styled.p`
     font-size: ${sizes.button};
     font-weight: 600;
 `
+const finalscore = styled.p`
+    background: white;
+    color: ${colors.blue};
+    font-weight: bold;
+    width: 30%;
+    text-align: center;
+    font-size: ${sizes.text};
+    margin-top: 2vh;
+`
 
 export {
     title,
     text,
     score,
-    user
+    user,
+    finalscore
 }

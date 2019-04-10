@@ -33,15 +33,15 @@ const link = styled(Link)`
     padding: 1% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    background: ${props => props.primary ? colors.lightGreen : colors.lightOrange};
-    box-shadow: 0 6px ${props => props.primary ? colors.darkGreen : colors.darkOrange};
+    background: ${props => props.primary ? colors.lightGreen : props.mainColor};
+    box-shadow: 0 6px ${props => props.primary ? colors.darkGreen : props.secondaryColor};
     position: relative;
     &:hover {
-        box-shadow: 0 4px ${props => props.primary ? colors.darkGreen : colors.darkOrange};
+        box-shadow: 0 4px ${props => props.primary ? colors.darkGreen : props.secondaryColor};
         top: 2px;
     }
     &:active {
-        box-shadow: 0 0 ${props => props.primary ? colors.darkGreen : colors.darkOrange};
+        box-shadow: 0 0 ${props => props.primary ? colors.darkGreen : props.secondaryColor};
         top: 6px;
     }
 `
