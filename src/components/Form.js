@@ -1,37 +1,38 @@
 import React, { Component } from 'react'
 import { buttons, containers } from '../styles'
-
+import { StoreConsumer } from '../store/MainStore'
 
 export default class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: true
+            navigate: false,
+            username: '',
+            password: ''
         }
     }
 
-    handleClick() {
-        let state = !this.state.show
-        this.setState({
-            show: state
-        })
+    submitAndRedirect(_cb) {
+        _cb(this.state)
     }
 
     render() {
         return (
-            <containers.form>
-                <form className="show">
-                    <label>
-                        Pseudo
-                        <input className="" type="text" placeholder="Balkhrod" name="username" />
-                    </label>
-                    <label>
-                        Password
-                        <input type="password" placeholder="********" name="password" />
-                    </label>
-                    <buttons.input type="submit" value="S'inscrire/Connexion" />
-                </form>
-            </containers.form>
+            <StoreConsumer>
+                {({state, actions}) => (
+                    <containers.form>
+                        <label>
+                            Pseudo
+                            <input type="text" placeholder="Balkhrod" value={this.state.username} onChange={e => this.setState({ username: e.target.value })} />
+                        </label>
+                        <label>
+                            Password
+                            <input type="password" placeholder="********" value={this.state.password} onChange={e => this.setState({ password: e.target.value })} />
+                        </label>
+                        <buttons.input onClick={() => actions.login(this.state)}>S'inscrire/Connexion</buttons.input>
+                    </containers.form>
+                )}
+            </StoreConsumer>
         )
     }
 }

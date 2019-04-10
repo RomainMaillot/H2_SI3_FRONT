@@ -35,21 +35,28 @@ class StoreProvider extends Component {
     }
 
     login(data) {
-        const res = this.api.post(`login.php`, { ...data })
-        if (res.id) {
-            this.setState({
-                ...this.state,
-                user: {
-                    isloggedin: true,
-                    id: res.id,
-                    username: res.username,
-                    best_score: res.best_score
+        if (data.username.length && data.password.length) {
+            const fd = new FormData()
+            fd.set('username', data.username)
+            fd.set('password', data.password)
+            this.api.post(`login.php`, fd).then(res => {
+                if (res.id) {
+                    this.setState({
+                        ...this.state,
+                        user: {
+                            isloggedin: true,
+                            id: res.id,
+                            username: res.username,
+                            best_score: res.best_score
+                        }
+                    })
+                    console.log(this.state)
+                    return res
+                } else {
+                    console.error('Login failed.')
+                    return { error: true }
                 }
             })
-            return res
-        } else {
-            console.error('Login failed.')
-            return { error: true }
         }
     }
 
