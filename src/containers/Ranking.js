@@ -3,7 +3,7 @@ import { texts, containers } from '../styles'
 import Request from '../utils/Request'
 import { Header, User } from '../components'
 
-export default class Home extends Component {
+export default class Ranking extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ export default class Home extends Component {
     render() {
         return (
             <containers.ranking>
-                <Header />
+                <Header title="classement général" />
                 <div className="users">
                     <User id="1" user="Borthold" score="250" />
                     <User id="1" user="Borthold" score="250" />

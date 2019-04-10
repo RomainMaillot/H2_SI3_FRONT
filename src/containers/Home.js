@@ -8,7 +8,7 @@ export default class Home extends Component {
         super(props);
         this.state = {
             error: false,
-            isLoged: false
+            isLoged: true
         }
         const api = new Request()
     }

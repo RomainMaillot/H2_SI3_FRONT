@@ -31,11 +31,28 @@ const finalscore = styled.p`
     font-size: ${sizes.text};
     margin-top: 2vh;
 `
+const label = styled.h3`
+    color: ${colors.blue};
+    font-size: ${sizes.button};
+    font-weight: 400;
+`
+const name = styled.h2`
+    color: ${colors.blue};
+    font-size: ${sizes.text};
+    font-weight: 400;
+`
+const data = styled.p`
+    color: ${colors.darkGrey};
+    font-size: ${sizes.button};
+`
 
 export {
     title,
     text,
     score,
     user,
-    finalscore
+    finalscore,
+    label,
+    name,
+    data
 }

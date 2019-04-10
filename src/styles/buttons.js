@@ -89,6 +89,16 @@ const cross = styled(Link)`
     height: 100%;
     display: flex;
 `
+const profil = styled(Link)`
+    border: none;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    height: 100%;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+`
 const question = styled.button`
     border: none;
     cursor: pointer;
@@ -117,5 +127,6 @@ export {
     link,
     input,
     cross,
-    question
+    question,
+    profil
 }

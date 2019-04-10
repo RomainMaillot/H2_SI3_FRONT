@@ -135,9 +135,12 @@ const start = styled.div`
     justify-content: center;
     align-items: center;
     a:nth-of-type(1) {
-        margin-top: 5%;
+        margin: 0;
     }
     a:nth-of-type(2) {
+        margin-top: 5%;
+    }
+    a:nth-of-type(3) {
         margin-top: 2%;
     }
 `
@@ -183,6 +186,51 @@ const score = styled.div`
         margin-bottom: 2vh;
     }
 `
+const profil = styled.div`
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .user--infos {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 80%;
+        margin-top: 5vh;
+        background: ${colors.lightGrey};
+        align-items: center;
+        .img {
+            width: 20%;
+            height: 80%;
+            img {
+                border: solid 1px ${colors.blue};
+                border-radius: 50%;
+                width: auto;
+                padding: 40px;
+                box-sizing: border-box;
+                height: 100%;
+            }
+        }
+        .infos {
+            width: 50%;
+            .datas {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+    .badges {
+        background: ${colors.lightGrey};
+        margin-top: 2vh;
+        width: 80%;
+        min-height: 500px;
+        padding-left: 50px;
+        box-sizing: border-box;
+    }
+`
 
 export {
     home,
@@ -192,5 +240,6 @@ export {
     user,
     room,
     score,
-    start
+    start,
+    profil
 }

@@ -12,7 +12,7 @@ export default class Header extends Component {
         return (
             <containers.header>
                 <buttons.arrow to="./"><img src={icon_arrow} /></buttons.arrow>
-                <texts.title>classement général</texts.title>
+                <texts.title>{this.props.title}</texts.title>
             </containers.header>
         )
     }
