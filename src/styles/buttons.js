@@ -34,15 +34,15 @@ const link = styled(Link)`
     padding: 1% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    background: ${props => props.primary ? colors.lightGreen : props.mainColor};
-    box-shadow: 0 6px ${props => props.primary ? colors.darkGreen : props.secondaryColor};
+    background: ${props => props.primary ? colors.lightGreen : props.main};
+    box-shadow: 0 6px ${props => props.primary ? colors.darkGreen : props.secondary};
     position: relative;
     &:hover {
-        box-shadow: 0 4px ${props => props.primary ? colors.darkGreen : props.secondaryColor};
+        box-shadow: 0 4px ${props => props.primary ? colors.darkGreen : props.secondary};
         top: 2px;
     }
     &:active {
-        box-shadow: 0 0 ${props => props.primary ? colors.darkGreen : props.secondaryColor};
+        box-shadow: 0 0 ${props => props.primary ? colors.darkGreen : props.secondary};
         top: 6px;
     }
 `
