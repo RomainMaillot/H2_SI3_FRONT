@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 // Creating style of the component
 const main = styled.button`
+    min-width: 200px;
     border: none;
     cursor: pointer;
     outline: none;
@@ -25,6 +26,7 @@ const main = styled.button`
     }
 `
 const link = styled(Link)`
+    min-width: 200px;
     border: none;
     cursor: pointer;
     outline: none;
