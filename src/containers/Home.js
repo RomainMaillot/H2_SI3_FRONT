@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { texts, buttons, containers } from '../styles';
 import Request from '../utils/Request'
-import { Form } from '../components'
+import { Form, Start } from '../components'
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: false
+            error: false,
+            isLoged: false
         }
         const api = new Request()
     }
@@ -17,13 +18,7 @@ export default class Home extends Component {
             <containers.home>
                 <texts.title huge>pop quiz</texts.title>
                 <texts.text>Le quiz multijoueur 100 % pop culture !</texts.text>
-                <Form />
-                <buttons.link primary to="./room">
-                    Commencer la partie !
-                </buttons.link>
-                <buttons.link mainColor="#E67E22" secondaryColor="#D35400" to="./ranking">
-                    Voir classement
-                </buttons.link>
+                {this.state.isLoged ? <Start /> : <Form />}
             </containers.home>
         )
     }

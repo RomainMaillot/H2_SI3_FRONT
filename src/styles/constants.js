@@ -4,10 +4,6 @@ const colors = {
     green: '#2ECC71',
     lightGreen: '#2ECC71',
     darkGreen: '#27AE60',
-    lightYellow: '#F1C40F',
-    darkYellow: '#F39C12',
-    lightPurple: '#9B59B6',
-    darkPurple: '#8E44AD',
     grey: '#ECF0F1',
     lightGrey: '#F7F7F7',
     darkGrey: '#95A5A6'

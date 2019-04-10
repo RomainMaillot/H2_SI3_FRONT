@@ -96,27 +96,49 @@ const form = styled.div`
     flex-direction: row;
     width: 50%;
     margin-top: 5%;
+    height: 20%;
     .show {
         transform: translateX(0);
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
+        align-items: center;
         width: 100%;
-        transition: all 0.5s;
     }
-    .hidden {
-        transform: translateX(100%);
-        z-index: -1;
-        position: absolute;
-        opacity: 0;
-    }
-    input:nth-of-type(1) {
-        width: 60%;
-        border: none;
-        outline: none;
-        text-decoration: none;
-        border-radius: 3px;
-        padding-left: 10px;
+    label {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: white;
         font-size: ${sizes.button};
+        margin: 2vh 0;
+        input {
+            width: 70%;
+            height: 5vh;
+            border: none;
+            outline: none;
+            text-decoration: none;
+            border-radius: 3px;
+            padding-left: 10px;
+            font-size: ${sizes.button};
+        }
+        input::placeholder {
+            color: ${colors.darkGrey};
+        }
+    }
+`
+const start = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a:nth-of-type(1) {
+        margin-top: 5%;
+    }
+    a:nth-of-type(2) {
+        margin-top: 2%;
     }
 `
 const user = styled.div`
@@ -169,5 +191,6 @@ export {
     form,
     user,
     room,
-    score
+    score,
+    start
 }

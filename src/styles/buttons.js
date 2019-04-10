@@ -53,12 +53,13 @@ const input = styled.input`
     outline: none;
     text-decoration: none;
     border-radius: 3px;
-    padding: 1% 3%;
+    padding: 2% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    width: 20%
+    width: 40%
     background: ${colors.lightGreen};
     box-shadow: 0 6px ${colors.darkGreen};
+    margin-top: 2vh;
     position: relative;
     &:hover {
         box-shadow: 0 4px ${colors.darkGreen};

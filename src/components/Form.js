@@ -20,13 +20,16 @@ export default class Form extends Component {
     render() {
         return (
             <containers.form>
-                <div className={this.state.show ? 'show': 'hidden'}>
-                    <buttons.main yellow onClick={() => this.handleClick()}>Choisir mon pseudo</buttons.main>
-                    <buttons.main onClick={() => this.handleClick()}>Pseudo aléatoire</buttons.main>
-                </div>
-                <form className={this.state.show ? 'hidden' : 'show'}>
-                    <input type="text" placeholder='Balkhrod' />
-                    <buttons.input type="submit" value="Valider" />
+                <form className="show">
+                    <label>
+                        Pseudo
+                        <input className="" type="text" placeholder="Balkhrod" name="username" />
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" placeholder="********" name="password" />
+                    </label>
+                    <buttons.input type="submit" value="S'inscrire/Connexion" />
                 </form>
             </containers.form>
         )
