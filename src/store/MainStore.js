@@ -4,21 +4,25 @@ import Request from '../utils/Request'
 const StoreContext = React.createContext('Main')
 const StoreConsumer = StoreContext.Consumer
 
+const initialState = {
+    user: {
+        isloggedin: false,
+        id: null,
+        username: null,
+        best_score: null
+    }
+}
+
 class StoreProvider extends Component {
     constructor(props) {
         super()
         this.api = new Request()
-        this.state = {
-            user: {
-                isloggedin: false,
-                id: null,
-                username: null,
-                best_score: null
-            }
-        }
+        this.state = initialState
 
         this.actions = {
-
+            getUserByName: this.getUserByName.bind(this),
+            getUserById: this.getUserById.bind(this),
+            login: this.login.bind(this)
         }
     }
 
@@ -26,7 +30,7 @@ class StoreProvider extends Component {
         return this.api.get(`user.php?name=${_name}`)
     }
 
-    getUserByName(_id) {
+    getUserById(_id) {
         return this.api.get(`user.php?id=${_id}`)
     }
 
@@ -47,6 +51,10 @@ class StoreProvider extends Component {
             console.error('Login failed.')
             return { error: true }
         }
+    }
+
+    logout() {
+        this.setState(initialState)
     }
 
     render () {
