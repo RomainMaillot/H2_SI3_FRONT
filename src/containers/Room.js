@@ -9,9 +9,11 @@ export default class Room extends Component {
         super(props);
         this.state = {
             error: false,
+            navigate: false,
             time: 0,
             timer: 5000,
             iteration: 0,
+            maxIteration: 2,
             styles: {
                 transform: 'scaleX(0)'
             }
@@ -45,8 +47,9 @@ export default class Room extends Component {
                 iteration: iteration
             })
         }
-        if(this.state.iteration===5)
+        if(this.state.iteration === this.state.maxIteration)
         {
+            this.setState({navigate: true})
             console.log('end')
         }
     }
@@ -54,11 +57,12 @@ export default class Room extends Component {
     render() {
         return (
             <containers.room>
+                {this.state.navigate ? <Redirect to={'/score'}/> : null}
                 <header>
                     <texts.user>Joueur : Balkhrod</texts.user>
                     <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
                 </header>
-                <texts.title>question n°01</texts.title>
+                <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
                 <texts.text>Quel est le nom de l’associer de Walter White dans la série Breaking Bad ?</texts.text>
                 <div className="timer" style={this.state.styles}></div>
                 <main>
