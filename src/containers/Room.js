@@ -79,7 +79,7 @@ class Room extends Component {
                                             return <buttons.question
                                                         key={i}
                                                         onClick={() => {
-                                                            actions.saveProgress({ answer: a.content })
+                                                            actions.saveProgress({ answer: a.text })
                                                             if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1) {
                                                                 actions.endGame()
                                                                 this.setState({navigate: true})
@@ -87,7 +87,7 @@ class Room extends Component {
                                                         }}
                                                         main={this.state.colors[i].p}
                                                         secondary={this.state.colors[i].s}>
-                                                    {a.content}</buttons.question>
+                                                    {a.text}</buttons.question>
                                         })}
                                     </main>
                                 </React.Fragment>

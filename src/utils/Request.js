@@ -3,6 +3,7 @@ import axios from 'axios'
 export default class Request {
     constructor() {
         this.apiURL = 'http://localhost:80/H2_SI3/api'
+        //this.apiURL = 'http://popquizzapi.aymericm.fr:8888/api'
     }
 
     get(_url) {
@@ -43,6 +44,4 @@ export default class Request {
             }
         })
     }
-
-    // TODO: create a function for each api call
 }

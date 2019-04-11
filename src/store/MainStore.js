@@ -9,7 +9,8 @@ const initialState = {
         isloggedin: false,
         id: null,
         username: null,
-        progression: null,
+        progression_1: null,
+        progression_2: null,
         unlocked_badges: []
     },
     game: {
@@ -52,6 +53,7 @@ class StoreProvider extends Component {
             fd.set('username', data.username)
             fd.set('password', data.password)
             this.api.post(`login.php`, fd).then(res => {
+                console.log(res)
                 if (res.id) {
                     this.setState({
                         ...this.state,
@@ -59,11 +61,11 @@ class StoreProvider extends Component {
                             isloggedin: true,
                             id: res.id,
                             username: res.username,
-                            progression: res.progression,
+                            progression_1: res.progression_1,
+                            progression_2: res.progression_2,
                             unlocked_badges: res.unlocked_badges
                         }
                     })
-                    console.log(res)
                     return res
                 } else {
                     console.error('Login failed.')
@@ -134,6 +136,7 @@ class StoreProvider extends Component {
                         currentType: _type
                     }
                 })
+                console.log(q)
             }
         })
     }
@@ -146,10 +149,6 @@ class StoreProvider extends Component {
                 currentType: this.state.game.currentType
             }
         })
-    }
-
-    componentDidMount() {
-        
     }
 
     render () {

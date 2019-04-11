@@ -18,6 +18,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage" : "http://popquizz.aymericm.fr/",
   "browserslist": [
     ">0.2%",
     "not dead",
