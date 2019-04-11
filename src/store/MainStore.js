@@ -18,12 +18,13 @@ const initialState = {
         hasstarted: false,
         currentQuestion: 0,
         questions: [],
-        currentType: null
+        currentType: null,
+        trueAnswers: 0
     }
 }
 
 class StoreProvider extends Component {
-    constructor(props) {
+    constructor() {
         super()
         this.api = new Request()
         this.state = initialState
@@ -93,43 +94,39 @@ class StoreProvider extends Component {
     }
 
     saveProgress(_data) {
-        console.log('sp')
-        this.setState({
-            ...this.state,
-            game: {
-                ...this.state.game,
-                currentQuestion: this.state.game.currentQuestion + 1
-            }
-        })
-        if (_data.answer) {
+        let s_inc = 0
+        if (_data.answer == true) {
+            s_inc = 1
+        }
+        if (_data.answer !== undefined) {
+            console.log( parseInt(this.state.game.trueAnswers))
             this.setState({
                 ...this.state,
                 game: {
                     ...this.state.game,
-                    currentQuestion: this.state.game.currentQuestion + 1
+                    currentQuestion: this.state.game.currentQuestion + 1,
+                    trueAnswers: parseInt(this.state.game.trueAnswers + s_inc)
                 }
             })
-            // const fd = new FormData()
-            // fd.set('type', this.state.game.questions[_data.index].type)
-            // fd.set('index', this.state.game.currentQuestion)
-            // fd.set('answer', _data.answer)
-            // fd.set('userid', this.state.user.id)
-            // fd.set('questid', this.state.game.questions[_data.index].id)
-            // this.api.post(`saveprogress.php`, fd).then(res => {
-            //     if (res === 'true') {
-            //         return res
-            //     } else {
-            //         console.error('Save failed.')
-            //         return { error: true }
-            //     }
-            // })
+            const fd = new FormData()
+            fd.set('type', this.state.game.questions[this.state.game.currentQuestion].type)
+            fd.set('answer', s_inc)
+            fd.set('userid', this.state.user.id)
+            this.api.post(`saveprogress.php`, fd).then(res => {
+                console.log('ta', res)
+                if (res === true) {
+                    return res
+                } else {
+                    console.error('Save failed.')
+                    return { error: true }
+                }
+            })
         }
     }
 
     startGame(_type = 0) {
+        this.endGame();
         this.api.get(`questions.php?type=${_type}`).then(res => {
-            console.log(_type)
-            console.log(res)
             if (res.error) {
                 console.error('Unknown error while fetching.')
             } else {
@@ -141,10 +138,10 @@ class StoreProvider extends Component {
                         hasstarted: true,
                         questions: q,
                         currentQuestion: 0,
-                        currentType: _type
+                        currentType: _type,
+                        trueAnswers: 0
                     }
                 })
-                console.log(q)
             }
         })
     }

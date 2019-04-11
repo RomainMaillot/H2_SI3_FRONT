@@ -26,11 +26,7 @@ export default class Profil extends Component {
                                 <div className="datas">
                                     <div>
                                         <texts.label>Progression</texts.label>
-                                        <texts.data>145 / 2000 questions</texts.data>
-                                    </div>
-                                    <div>
-                                        <texts.label>Temps de jeu</texts.label>
-                                        <texts.data>150 heures</texts.data>
+                                        <texts.data>{(parseInt(state.user.progression_1) + parseInt(state.user.progression_2))} / 2000 questions</texts.data>
                                     </div>
                                 </div>
                             </div>

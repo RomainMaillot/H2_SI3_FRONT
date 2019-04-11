@@ -17,8 +17,8 @@ export default class Score extends Component {
                     <containers.score>
                         <texts.title>la partie est terminée</texts.title>
                         <texts.text>Bravo <span>{state.user.username}</span></texts.text>
-                        <texts.text>Vous avez fait un score de</texts.text>
-                        <texts.finalscore>15/20 points</texts.finalscore>
+                        <texts.text>Vous avez répondu à</texts.text>
+                        <texts.finalscore>{state.game.trueAnswers} questions justes</texts.finalscore>
                         <buttons.link primary="true" to="./room" onClick={() => actions.startGame(state.game.currentType)}>
                             Relancer une partie
                         </buttons.link>
