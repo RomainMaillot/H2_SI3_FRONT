@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { texts, containers } from '../styles'
-import Request from '../utils/Request'
+import { containers } from '../styles'
 import { Header, User } from '../components'
 
 export default class Ranking extends Component {
@@ -9,7 +8,6 @@ export default class Ranking extends Component {
         this.state = {
             error: false
         }
-        const api = new Request()
     }
 
     render() {

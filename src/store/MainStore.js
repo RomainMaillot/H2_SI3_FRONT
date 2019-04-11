@@ -16,7 +16,6 @@ const initialState = {
         hasstarted: false,
         currentQuestion: 0,
         questions: [],
-        answers: [],
         currentType: null
     }
 }
@@ -87,6 +86,32 @@ class StoreProvider extends Component {
         return r
     }
 
+    saveProgress(_data) {
+        if (_data.answer) {
+            this.setState({
+                ...this.state,
+                game: {
+                    ...this.state.game,
+                    currentQuestion: this.state.game.currentQuestion + 1
+                }
+            })
+            const fd = new FormData()
+            fd.set('type', this.state.game.questions[_data.index].type)
+            fd.set('index', this.state.game.currentQuestion)
+            fd.set('answer', _data.answer)
+            fd.set('userid', this.state.user.id)
+            fd.set('questid', this.state.game.questions[_data.index].id)
+            this.api.post(`saveprogress.php`, fd).then(res => {
+                if (res === 'true') {
+                    return res
+                } else {
+                    console.error('Save failed.')
+                    return { error: true }
+                }
+            })
+        }
+    }
+
     startGame(_type = 0) {
         this.api.get(`questions.php?type=${_type}`).then(res => {
             console.log(_type)
@@ -102,8 +127,7 @@ class StoreProvider extends Component {
                         hasstarted: true,
                         questions: q,
                         currentQuestion: 0,
-                        currentType: _type,
-                        answers: []
+                        currentType: _type
                     }
                 })
             }

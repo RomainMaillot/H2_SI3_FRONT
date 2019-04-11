@@ -52,10 +52,7 @@ class Room extends Component {
         } else {
             if(this.state.time !== 0) {
                 clearInterval(timer)
-                this.setState({
-                    time: 0,
-                    iteration: this.state.iteration + 1
-                })
+                this.setState({ time: 0 })
             }
         }
     }
@@ -71,20 +68,27 @@ class Room extends Component {
                             {state.game.loading ?
                                 <header style={{height: '100vh'}}>
                                     <texts.user>Chargement en cours...</texts.user>
-                                    <buttons.cross onClick={() => actions.endGame()} to="./"><img src={icon_cross} /></buttons.cross>
+                                    <buttons.cross onClick={() => actions.endGame()} to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
                                 </header>
                             :
                                 <React.Fragment>
                                     <header>
                                         <texts.user>Joueur : {state.user.username}</texts.user>
-                                        <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
+                                        <buttons.cross to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
                                     </header>
-                                    <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
-                                    <texts.text>{state.game.questions[this.state.iteration].text}</texts.text>
+                                    <texts.title>{`Question n°${state.game.currentQuestion + 1}`}</texts.title>
+                                    <texts.text>{state.game.questions[state.game.currentQuestion].text}</texts.text>
                                     <div className="timer" style={this.state.styles}></div>
                                     <main>
-                                        {state.game.questions[this.state.iteration].answers.map((a, i) => {
-                                            return <buttons.question key={i} main={this.state.colors[i].p} secondary={this.state.colors[i].s}>{a.content}</buttons.question>
+                                        {state.game.questions[state.game.currentQuestion].answers.map((a, i) => {
+                                            return <buttons.question
+                                                        key={i}
+                                                        onClick={() => {
+                                                            actions.saveProgress({ answer: a.content })
+                                                        }}
+                                                        main={this.state.colors[i].p}
+                                                        secondary={this.state.colors[i].s}>
+                                                    {a.content}</buttons.question>
                                         })}
                                     </main>
                                 </React.Fragment>

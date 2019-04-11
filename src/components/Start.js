@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import { buttons, containers } from '../styles';
 import icon_profil from '../assets/images/user.svg'
-import { StoreConsumer } from '../store/MainStore';
 
 export default class Start extends Component {
     render() {
         return (
             <containers.start>
-                <buttons.profil to="./profil"><img src={icon_profil} /></buttons.profil>
+                <buttons.profil to="./profil"><img src={icon_profil} alt={'Profile'} /></buttons.profil>
                 <buttons.link primary="true" to="./category">
                     Commencer la partie !
                 </buttons.link>
