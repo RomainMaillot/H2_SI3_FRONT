@@ -3,8 +3,9 @@ import { Redirect } from 'react-router-dom'
 import { texts, buttons, containers } from '../styles';
 import Request from '../utils/Request'
 import icon_cross from '../assets/images/cross.svg'
+import { StoreConsumer, StoreContext } from '../store/MainStore';
 
-export default class Room extends Component {
+class Room extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,15 +14,23 @@ export default class Room extends Component {
             time: 0,
             timer: 5000,
             iteration: 0,
-            maxIteration: 2,
+            maxIteration: undefined,
             styles: {
                 transform: 'scaleX(0)'
-            }
+            },
+            colors: [
+                {p: "#9B59B6", s: "#8E44AD"},
+                {p: "#E74C3C", s: "#C0392B"},
+                {p: "#F1C40F", s: "#F39C12"},
+                {p: "#1ABC9C", s: "#16A085"}
+            ]
         }
-        const api = new Request()
     }
 
     componentDidMount() {
+        this.setState({
+            maxIteration: this.context.state.game.questions.length - 1
+        })
         this.timer()
         setInterval(() => {
             this.timer()
@@ -38,40 +47,49 @@ export default class Room extends Component {
                 styles: styles
             })
         }, 100);
-        if(this.state.time !== 0)
-        {
-            let iteration = this.state.iteration + 1
-            clearInterval(timer)
-            this.setState({
-                time: 0,
-                iteration: iteration
-            })
-        }
-        if(this.state.iteration === this.state.maxIteration)
-        {
+
+        if(this.state.iteration === this.state.maxIteration) {
             this.setState({navigate: true})
-            console.log('end')
+        } else {
+            if(this.state.time !== 0) {
+                clearInterval(timer)
+                this.setState({
+                    time: 0,
+                    iteration: this.state.iteration + 1
+                })
+            }
         }
+
     }
 
     render() {
-        return (
-            <containers.room>
-                {this.state.navigate ? <Redirect to={'/score'}/> : null}
-                <header>
-                    <texts.user>Joueur : Balkhrod</texts.user>
-                    <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
-                </header>
-                <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
-                <texts.text>Quel est le nom de l’associer de Walter White dans la série Breaking Bad ?</texts.text>
-                <div className="timer" style={this.state.styles}></div>
-                <main>
-                    <buttons.question mainColor="#9B59B6" secondaryColor="#8E44AD">John</buttons.question>
-                    <buttons.question mainColor="#E74C3C" secondaryColor="#C0392B">John</buttons.question>
-                    <buttons.question mainColor="#F1C40F" secondaryColor="#F39C12">John</buttons.question>
-                    <buttons.question mainColor="#1ABC9C" secondaryColor="#16A085">John</buttons.question>
-                </main>
-            </containers.room>
-        )
+        if (this.state.navigate) {
+            return <Redirect to={'/score'}/>
+        } else {
+            return (
+                <StoreConsumer>
+                    {({state, actions}) => (
+                        <containers.room>
+                            <header>
+                                <texts.user>Joueur : {state.user.username}</texts.user>
+                                <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
+                            </header>
+                            <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
+                            <texts.text>{state.game.questions[this.state.iteration].text}</texts.text>
+                            <div className="timer" style={this.state.styles}></div>
+                            <main>
+                                {state.game.questions[this.state.iteration].answers.map((a, i) => {
+                                    return <buttons.question key={i} mainColor={this.state.colors[i].p} secondaryColor={this.state.colors[i].s}>{a.content}</buttons.question>
+                                })}
+                            </main>
+                        </containers.room>
+                    )}
+                </StoreConsumer>
+            )
+        }
     }
 }
+
+Room.contextType = StoreContext
+
+export default Room

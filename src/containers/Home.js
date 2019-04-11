@@ -19,8 +19,8 @@ export default class Home extends Component {
             <StoreConsumer>
                 {({state, actions}) => (
                     <containers.home>
-                        <texts.title huge>pop quiz</texts.title>
-                        <texts.text>Le quiz multijoueur 100 % pop culture !</texts.text>
+                        <texts.title huge>pop quizz</texts.title>
+                        <texts.text>Le quizz multijoueur 100 % pop culture !</texts.text>
                         {state.user.isloggedin ? <Start /> : <Form />}
                     </containers.home>
                 )}

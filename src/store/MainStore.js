@@ -10,6 +10,12 @@ const initialState = {
         id: null,
         username: null,
         best_score: null
+    },
+    game: {
+        hasstarted: false,
+        currentQuestion: 0,
+        questions: [],
+        answers: []
     }
 }
 
@@ -22,7 +28,9 @@ class StoreProvider extends Component {
         this.actions = {
             getUserByName: this.getUserByName.bind(this),
             getUserById: this.getUserById.bind(this),
-            login: this.login.bind(this)
+            login: this.login.bind(this),
+            logout: this.logout.bind(this),
+            startGame: this.startGame.bind(this)
         }
     }
 
@@ -50,7 +58,6 @@ class StoreProvider extends Component {
                             best_score: res.best_score
                         }
                     })
-                    console.log(this.state)
                     return res
                 } else {
                     console.error('Login failed.')
@@ -64,6 +71,35 @@ class StoreProvider extends Component {
         this.setState(initialState)
     }
 
+    deserializeAnswers(_data) {
+        let r = []
+        for (let i = 0; i < _data.length; i++) {
+            const a = JSON.parse(_data[i].answers);
+            r.push({
+                id: _data[i].id,
+                text: _data[i].text,
+                answers: a
+            })
+        }
+        return r
+    }
+
+    startGame() {
+        this.api.get('questions.php').then(res => {
+            const q = this.deserializeAnswers(res)
+            this.setState({
+                ...this.state,
+                game: {
+                    hasstarted: true,
+                    questions: q,
+                    currentQuestion: 0,
+                    answers: []
+                }
+            })
+            console.log(this.state.game)
+        })
+    }
+
     render () {
         return (
             <StoreContext.Provider value={{state: this.state, actions: this.actions}}>
@@ -74,6 +110,7 @@ class StoreProvider extends Component {
 }
 
 export {
+    StoreContext,
     StoreProvider,
     StoreConsumer
 }

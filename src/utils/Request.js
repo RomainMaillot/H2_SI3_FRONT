@@ -6,18 +6,20 @@ export default class Request {
     }
 
     get(_url) {
-        if (_url) {
-            axios.defaults.withCredentials = true
-            return axios.get(`${this.apiURL}/${_url}`).then(res => {
-                return JSON.parse(res.data)
-            }).catch(err => {
-                console.error(err)
-                return { error: true }
-            })
-        } else {
-            console.error('No url provided to get().')
-            return { error: true }
-        }
+        return new Promise((resolve, reject) => {
+            if (_url) {
+                return axios.get(`${this.apiURL}/${_url}`).then(res => {
+                    console.log('resq', res)
+                    resolve(res.data)
+                }).catch(err => {
+                    console.error(err)
+                    reject({ error: true })
+                })
+            } else {
+                console.error('No url provided to get().')
+                reject({ error: true })
+            }
+        })
     }
 
     post(_url, _fd) {
@@ -30,7 +32,6 @@ export default class Request {
                     data: _fd,
                     config: { headers: {'Content-Type': 'multipart/form-data' }}
                 }).then(res => {
-                    console.log(res)
                     resolve(res.data)
                 }).catch(err => {
                     console.error(err)
