@@ -30,7 +30,8 @@ class StoreProvider extends Component {
             getUserById: this.getUserById.bind(this),
             login: this.login.bind(this),
             logout: this.logout.bind(this),
-            startGame: this.startGame.bind(this)
+            startGame: this.startGame.bind(this),
+            endGame: this.endGame.bind(this)
         }
     }
 
@@ -85,18 +86,36 @@ class StoreProvider extends Component {
     }
 
     startGame() {
+        this.setState({
+            ...this.state,
+            game: {
+                ...this.state.game,
+                hasstarted: true,
+                currentQuestion: 0,
+                answers: []
+            }
+        })
+    }
+
+    endGame() {
+        this.setState({
+            ...this.state,
+            game: initialState.game
+        })
+    }
+
+    componentDidMount() {
         this.api.get('questions.php').then(res => {
             const q = this.deserializeAnswers(res)
             this.setState({
                 ...this.state,
                 game: {
-                    hasstarted: true,
+                    hasstarted: false,
                     questions: q,
                     currentQuestion: 0,
                     answers: []
                 }
             })
-            console.log(this.state.game)
         })
     }
 

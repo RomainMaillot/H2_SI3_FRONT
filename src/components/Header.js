@@ -11,7 +11,7 @@ export default class Header extends Component {
     render() {
         return (
             <containers.header>
-                <buttons.arrow to="./"><img src={icon_arrow} /></buttons.arrow>
+                <buttons.arrow to={"/"}><img src={icon_arrow} /></buttons.arrow>
                 <texts.title>{this.props.title}</texts.title>
             </containers.header>
         )
