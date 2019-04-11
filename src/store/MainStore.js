@@ -9,7 +9,8 @@ const initialState = {
         isloggedin: false,
         id: null,
         username: null,
-        best_score: null
+        progression: null,
+        unlocked_badges: []
     },
     game: {
         loading: true,
@@ -58,9 +59,11 @@ class StoreProvider extends Component {
                             isloggedin: true,
                             id: res.id,
                             username: res.username,
-                            best_score: res.best_score
+                            progression: res.progression,
+                            unlocked_badges: res.unlocked_badges
                         }
                     })
+                    console.log(res)
                     return res
                 } else {
                     console.error('Login failed.')

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { texts, containers } from '../styles'
 import { Header } from '../components'
 import avatar from '../assets/images/avatar.png'
-import badge from '../assets/images/badge_welcome.png'
+import badges from '../store/BadgeList'
+import { StoreConsumer } from '../store/MainStore';
 
 export default class Profil extends Component {
     constructor(props) {
@@ -14,72 +15,43 @@ export default class Profil extends Component {
 
     render() {
         return (
-            <containers.profil>
-                <Header title="profil" />
-                <div className="user--infos">
-                    <div className="img"><img src={avatar} alt={'user avatar'} /></div>
-                    <div className="infos">
-                        <texts.name>Balkhrod</texts.name>
-                        <div className="datas">
-                            <div>
-                                <texts.label>Progression</texts.label>
-                                <texts.data>145 / 2000 questions</texts.data>
-                            </div>
-                            <div>
-                                <texts.label>Temps de jeu</texts.label>
-                                <texts.data>150 heures</texts.data>
+            <StoreConsumer>
+                {({state, actions}) => (
+                    <containers.profil>
+                        <Header title="profil" />
+                        <div className="user--infos">
+                            <div className="img"><img src={avatar} alt={'user avatar'} /></div>
+                            <div className="infos">
+                                <texts.name>{state.user.username}</texts.name>
+                                <div className="datas">
+                                    <div>
+                                        <texts.label>Progression</texts.label>
+                                        <texts.data>145 / 2000 questions</texts.data>
+                                    </div>
+                                    <div>
+                                        <texts.label>Temps de jeu</texts.label>
+                                        <texts.data>150 heures</texts.data>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div className="badges">
-                    <texts.name>Badges</texts.name>
-                    <containers.badges>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img unlock="true" src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                        <containers.img src={badge}></containers.img>
-                    </containers.badges>
-                </div>
-            </containers.profil>
+                        <div className="badges">
+                            <texts.name>Badges</texts.name>
+                            <containers.badges>
+                                {badges.map((badgeid, key) => {
+                                    console.log(badgeid)
+                                    console.log(state.user.unlocked_badges)
+                                    if (state.user.unlocked_badges.includes(badgeid)) {
+                                        return <containers.img key={key} unlock="true" src={`/img/badges/badge_${badgeid}.png`}></containers.img>
+                                    } else {
+                                        return <containers.img key={key} src={`/img/badges/badge_unlock.png`}></containers.img>
+                                    }
+                                })}
+                            </containers.badges>
+                        </div>
+                    </containers.profil>
+                )}
+            </StoreConsumer>
         )
     }
 }
