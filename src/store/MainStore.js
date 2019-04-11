@@ -74,6 +74,7 @@ class StoreProvider extends Component {
 
     deserializeAnswers(_data) {
         let r = []
+        console.log('_data', _data[0].answers)
         for (let i = 0; i < _data.length; i++) {
             const a = JSON.parse(_data[i].answers);
             r.push({
@@ -106,16 +107,21 @@ class StoreProvider extends Component {
 
     componentDidMount() {
         this.api.get('questions.php').then(res => {
-            const q = this.deserializeAnswers(res)
-            this.setState({
-                ...this.state,
-                game: {
-                    hasstarted: false,
-                    questions: q,
-                    currentQuestion: 0,
-                    answers: []
-                }
-            })
+            if (res.error) {
+                console.error('error while fetching.')
+            } else {
+                const q = this.deserializeAnswers(res)
+                this.setState({
+                    ...this.state,
+                    game: {
+                        hasstarted: false,
+                        questions: q,
+                        currentQuestion: 0,
+                        answers: []
+                    }
+                })
+                console.log(q)
+            }
         })
     }
 

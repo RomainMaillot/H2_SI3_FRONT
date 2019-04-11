@@ -9,7 +9,6 @@ export default class Request {
         return new Promise((resolve, reject) => {
             if (_url) {
                 return axios.get(`${this.apiURL}/${_url}`).then(res => {
-                    console.log('resq', res)
                     resolve(res.data)
                 }).catch(err => {
                     console.error(err)
