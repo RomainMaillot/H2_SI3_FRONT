@@ -40,6 +40,7 @@ const name = styled.h2`
     color: ${colors.blue};
     font-size: ${sizes.text};
     font-weight: 400;
+    margin: 0;
 `
 const data = styled.p`
     color: ${colors.darkGrey};

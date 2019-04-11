@@ -123,11 +123,8 @@ const form = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
     margin-top: 5%;
-    height: 20%;
     label {
-        width: 80%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -135,15 +132,24 @@ const form = styled.div`
         color: white;
         font-size: ${sizes.button};
         margin: 2vh 0;
+        position: relative;
         input {
-            width: 70%;
+            width: 300px;
             height: 5vh;
             border: none;
             outline: none;
             text-decoration: none;
             border-radius: 3px;
             padding-left: 10px;
+            box-sizing: border-box;
             font-size: ${sizes.button};
+        }
+        span {
+            position: absolute;
+            top: 0;
+            right: 110%;
+            color: white;
+            height: 100%;
         }
         input::placeholder {
             color: ${colors.darkGrey};
@@ -237,6 +243,10 @@ const profil = styled.div`
         }
         .infos {
             width: 50%;
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 3px;
             .datas {
                 display: flex;
                 flex-direction: row;
@@ -251,6 +261,7 @@ const profil = styled.div`
         min-height: 500px;
         padding-left: 50px;
         box-sizing: border-box;
+        border-radius: 3px;
     }
 `
 

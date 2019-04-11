@@ -32,6 +32,8 @@ const link = styled(Link)`
     text-decoration: none;
     border-radius: 3px;
     padding: 1% 3%;
+    width: 300px;
+    text-align: center;
     font-size: ${sizes.button};
     color: #FFFFFF;
     background: ${props => props.primary ? colors.lightGreen : props.main};
@@ -56,7 +58,8 @@ const input = styled.div`
     padding: 2% 3%;
     font-size: ${sizes.button};
     color: #FFFFFF;
-    width: 40%;
+    width: 300px;
+    box-sizing: border-box;
     background: ${colors.lightGreen};
     box-shadow: 0 6px ${colors.darkGreen};
     margin-top: 2vh;
