@@ -93,6 +93,14 @@ class StoreProvider extends Component {
     }
 
     saveProgress(_data) {
+        console.log('sp')
+        this.setState({
+            ...this.state,
+            game: {
+                ...this.state.game,
+                currentQuestion: this.state.game.currentQuestion + 1
+            }
+        })
         if (_data.answer) {
             this.setState({
                 ...this.state,

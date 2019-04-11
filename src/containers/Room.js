@@ -46,8 +46,13 @@ class Room extends Component {
             this.setState({navigate: true})
         } else {
             if(this.state.time !== 0) {
+                console.log('kkk')
                 clearInterval(timer)
-                this.setState({ time: 0 })
+                this.context.actions.saveProgress({answer: ''})
+                this.setState({
+                    time: 0,
+                    styles: { transform: `scaleX(${0})` }
+                })
             }
         }
     }
@@ -80,9 +85,17 @@ class Room extends Component {
                                                         key={i}
                                                         onClick={() => {
                                                             actions.saveProgress({ answer: a.text })
+                                                            this.setState({
+                                                                time: 0,
+                                                                styles: { transform: `scaleX(${0})` }
+                                                            })
                                                             if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1) {
                                                                 actions.endGame()
-                                                                this.setState({navigate: true})
+                                                                this.setState({
+                                                                    navigate: true,
+                                                                    time: 0,
+                                                                    styles: { transform: `scaleX(${0})` }
+                                                                })
                                                             }
                                                         }}
                                                         main={this.state.colors[i].p}

@@ -23,8 +23,8 @@ export default class Category extends Component {
                             <buttons.link onClick={() => actions.startGame(1)} main="#9B59B6" secondary="#8E44AD" to="./room">
                                 Games of Thrones
                             </buttons.link>
-                            <buttons.link onClick={() => actions.startGame(2)} main="#E74C3C" secondary="#C0392B" to="./room">
-                                Star Wars
+                            <buttons.link main="#E74C3C" secondary="#C0392B" to="#">
+                                Star Wars <span>(Coming soon)</span>
                             </buttons.link>
                         </div>
                     </containers.category>

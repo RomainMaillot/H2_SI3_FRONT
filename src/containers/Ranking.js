@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
-import { containers } from '../styles'
+import { containers, texts } from '../styles'
 import { Header, User } from '../components'
+import Request from '../utils/Request'
 
 export default class Ranking extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: false
+            loading: true,
+            players: []
         }
+    }
+
+    componentDidMount() {
+        const api = new Request();
+        api.get('leaderboard.php').then(res => {
+            this.setState({
+                loading: false,
+                players: res
+            })
+            console.log(res)
+        })
     }
 
     render() {
@@ -15,29 +28,13 @@ export default class Ranking extends Component {
             <containers.ranking>
                 <Header title="classement général" />
                 <div className="users">
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
-                    <User id="1" user="Borthold" score="250" />
+                    {!this.state.loading ?
+                        this.state.players.map((player, index) => {
+                            return <User id={index + 1} user={player.username} score={player["SUM(progression_1+progression_2)"]} />
+                        })
+                    :
+                        <texts.text>Chargement en cours..</texts.text>
+                    }
                 </div>
             </containers.ranking>
         )
