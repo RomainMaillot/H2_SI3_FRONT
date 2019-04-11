@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { texts, buttons, containers } from '../styles';
-import Request from '../utils/Request'
 import icon_cross from '../assets/images/cross.svg'
 import { StoreConsumer, StoreContext } from '../store/MainStore';
 
@@ -69,18 +68,27 @@ class Room extends Component {
                 <StoreConsumer>
                     {({state, actions}) => (
                         <containers.room>
-                            <header>
-                                <texts.user>Joueur : {state.user.username}</texts.user>
-                                <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
-                            </header>
-                            <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
-                            <texts.text>{state.game.questions[this.state.iteration].text}</texts.text>
-                            <div className="timer" style={this.state.styles}></div>
-                            <main>
-                                {state.game.questions[this.state.iteration].answers.map((a, i) => {
-                                    return <buttons.question key={i} main={this.state.colors[i].p} secondary={this.state.colors[i].s}>{a.content}</buttons.question>
-                                })}
-                            </main>
+                            {state.game.loading ?
+                                <header style={{height: '100vh'}}>
+                                    <texts.user>Chargement en cours...</texts.user>
+                                    <buttons.cross onClick={() => actions.endGame()} to="./"><img src={icon_cross} /></buttons.cross>
+                                </header>
+                            :
+                                <React.Fragment>
+                                    <header>
+                                        <texts.user>Joueur : {state.user.username}</texts.user>
+                                        <buttons.cross to="./"><img src={icon_cross} /></buttons.cross>
+                                    </header>
+                                    <texts.title>{`Question n°${this.state.iteration + 1}`}</texts.title>
+                                    <texts.text>{state.game.questions[this.state.iteration].text}</texts.text>
+                                    <div className="timer" style={this.state.styles}></div>
+                                    <main>
+                                        {state.game.questions[this.state.iteration].answers.map((a, i) => {
+                                            return <buttons.question key={i} main={this.state.colors[i].p} secondary={this.state.colors[i].s}>{a.content}</buttons.question>
+                                        })}
+                                    </main>
+                                </React.Fragment>
+                            }
                         </containers.room>
                     )}
                 </StoreConsumer>

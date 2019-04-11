@@ -24,14 +24,13 @@ export default class Category extends Component {
                         <buttons.arrow to="./"><img src={icon_arrow} /></buttons.arrow>
                         <texts.text>Choississez une catégorie</texts.text>
                         <div className="categories">
-                            <buttons.link onClick={() => actions.startGame()} main="#9B59B6" secondary="#8E44AD" to="./room">
+                            <buttons.link onClick={() => actions.startGame(1)} main="#9B59B6" secondary="#8E44AD" to="./room">
                                 Games of Thrones
                             </buttons.link>
-                            <buttons.link onClick={() => actions.startGame()} main="#E74C3C" secondary="#C0392B" to="./room">
+                            <buttons.link onClick={() => actions.startGame(2)} main="#E74C3C" secondary="#C0392B" to="./room">
                                 Star Wars
                             </buttons.link>
                         </div>
-                        {state.game.hasstarted ? <Redirect to={'/room'} /> : null}
                     </containers.category>
                 )}
             </StoreConsumer>

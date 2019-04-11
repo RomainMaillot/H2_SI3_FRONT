@@ -2,10 +2,11 @@ import axios from 'axios'
 
 export default class Request {
     constructor() {
-        this.apiURL = 'http://localhost:8888/H2_SI3/api'
+        this.apiURL = 'http://localhost:80/H2_SI3/api'
     }
 
     get(_url) {
+        console.log(_url)
         return new Promise((resolve, reject) => {
             if (_url) {
                 return axios.get(`${this.apiURL}/${_url}`).then(res => {
