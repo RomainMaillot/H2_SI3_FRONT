@@ -258,10 +258,35 @@ const profil = styled.div`
         background: ${colors.lightGrey};
         margin-top: 2vh;
         width: 80%;
-        min-height: 500px;
-        padding-left: 50px;
+        height: 480px;
         box-sizing: border-box;
         border-radius: 3px;
+        overflow: scroll;
+        h2 {
+            padding-left: 50px;
+        }
+    }
+`
+const badges = styled.div`
+    margin: 10px auto;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    overflow: scroll;
+    height: 80%;
+    width: 90%;
+`
+const img = styled.img`
+    cursor: pointer;
+    height: 100px;
+    margin-bottom: 20px;
+    filter: ${props => props.unlock ? 'grayscale(0%)' : 'grayscale(100%)'};
+    transition: transform 0.3s;
+    will-change: transform;
+    &:hover {
+        transform: scale(1.2);
     }
 `
 
@@ -275,5 +300,7 @@ export {
     score,
     start,
     profil,
-    category
+    category,
+    badges,
+    img
 }

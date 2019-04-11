@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { texts, containers } from '../styles'
 import { Header } from '../components'
 import avatar from '../assets/images/avatar.png'
+import badge from '../assets/images/badge_welcome.png'
 
 export default class Profil extends Component {
     constructor(props) {
@@ -33,6 +34,50 @@ export default class Profil extends Component {
                 </div>
                 <div className="badges">
                     <texts.name>Badges</texts.name>
+                    <containers.badges>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img unlock="true" src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                        <containers.img src={badge}></containers.img>
+                    </containers.badges>
                 </div>
             </containers.profil>
         )
