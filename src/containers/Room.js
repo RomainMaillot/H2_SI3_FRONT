@@ -48,7 +48,7 @@ class Room extends Component {
             })
         }, 100);
 
-        if(this.state.iteration === this.state.maxIteration) {
+        if(this.state.iteration >= this.state.maxIteration) {
             this.setState({navigate: true})
         } else {
             if(this.state.time !== 0) {
@@ -59,7 +59,6 @@ class Room extends Component {
                 })
             }
         }
-
     }
 
     render() {
