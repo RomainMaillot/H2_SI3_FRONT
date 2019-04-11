@@ -261,7 +261,6 @@ const profil = styled.div`
         height: 480px;
         box-sizing: border-box;
         border-radius: 3px;
-        overflow: scroll;
         h2 {
             padding-left: 50px;
         }
@@ -274,7 +273,7 @@ const badges = styled.div`
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 80%;
     width: 90%;
 `
