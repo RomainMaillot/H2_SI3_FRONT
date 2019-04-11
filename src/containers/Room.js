@@ -12,8 +12,6 @@ class Room extends Component {
             navigate: false,
             time: 0,
             timer: 5000,
-            iteration: 0,
-            maxIteration: undefined,
             styles: {
                 transform: 'scaleX(0)'
             },
@@ -27,9 +25,6 @@ class Room extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            maxIteration: this.context.state.game.questions.length - 1
-        })
         this.timer()
         setInterval(() => {
             this.timer()
@@ -47,7 +42,7 @@ class Room extends Component {
             })
         }, 100);
 
-        if(this.state.iteration >= this.state.maxIteration) {
+        if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1 && this.context.state.game.loading === false) {
             this.setState({navigate: true})
         } else {
             if(this.state.time !== 0) {
@@ -85,6 +80,10 @@ class Room extends Component {
                                                         key={i}
                                                         onClick={() => {
                                                             actions.saveProgress({ answer: a.content })
+                                                            if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1) {
+                                                                actions.endGame()
+                                                                this.setState({navigate: true})
+                                                            }
                                                         }}
                                                         main={this.state.colors[i].p}
                                                         secondary={this.state.colors[i].s}>

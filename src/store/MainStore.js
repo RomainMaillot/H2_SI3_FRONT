@@ -32,7 +32,8 @@ class StoreProvider extends Component {
             login: this.login.bind(this),
             logout: this.logout.bind(this),
             startGame: this.startGame.bind(this),
-            endGame: this.endGame.bind(this)
+            endGame: this.endGame.bind(this),
+            saveProgress: this.saveProgress.bind(this)
         }
     }
 
@@ -95,20 +96,20 @@ class StoreProvider extends Component {
                     currentQuestion: this.state.game.currentQuestion + 1
                 }
             })
-            const fd = new FormData()
-            fd.set('type', this.state.game.questions[_data.index].type)
-            fd.set('index', this.state.game.currentQuestion)
-            fd.set('answer', _data.answer)
-            fd.set('userid', this.state.user.id)
-            fd.set('questid', this.state.game.questions[_data.index].id)
-            this.api.post(`saveprogress.php`, fd).then(res => {
-                if (res === 'true') {
-                    return res
-                } else {
-                    console.error('Save failed.')
-                    return { error: true }
-                }
-            })
+            // const fd = new FormData()
+            // fd.set('type', this.state.game.questions[_data.index].type)
+            // fd.set('index', this.state.game.currentQuestion)
+            // fd.set('answer', _data.answer)
+            // fd.set('userid', this.state.user.id)
+            // fd.set('questid', this.state.game.questions[_data.index].id)
+            // this.api.post(`saveprogress.php`, fd).then(res => {
+            //     if (res === 'true') {
+            //         return res
+            //     } else {
+            //         console.error('Save failed.')
+            //         return { error: true }
+            //     }
+            // })
         }
     }
 
@@ -137,7 +138,10 @@ class StoreProvider extends Component {
     endGame() {
         this.setState({
             ...this.state,
-            game: initialState.game
+            game: {
+                ...initialState.game,
+                currentType: this.state.game.currentType
+            }
         })
     }
 

@@ -19,7 +19,7 @@ export default class Score extends Component {
                         <texts.text>Bravo <span>{state.user.username}</span></texts.text>
                         <texts.text>Vous avez fait un score de</texts.text>
                         <texts.finalscore>15/20 points</texts.finalscore>
-                        <buttons.link primary="true" to="./room">
+                        <buttons.link primary="true" to="./room" onClick={() => actions.startGame(state.game.currentType)}>
                             Relancer une partie
                         </buttons.link>
                         <buttons.link main="#E74C3C" secondary="#C0392B" to="./">
