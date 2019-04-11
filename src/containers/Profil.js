@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { texts, containers } from '../styles'
-import Request from '../utils/Request'
 import { Header } from '../components'
 import avatar from '../assets/images/avatar.png'
 
@@ -10,7 +9,6 @@ export default class Profil extends Component {
         this.state = {
             error: false
         }
-        const api = new Request()
     }
 
     render() {
@@ -18,7 +16,7 @@ export default class Profil extends Component {
             <containers.profil>
                 <Header title="profil" />
                 <div className="user--infos">
-                    <div className="img"><img src={avatar} /></div>
+                    <div className="img"><img src={avatar} alt={'user avatar'} /></div>
                     <div className="infos">
                         <texts.name>Balkhrod</texts.name>
                         <div className="datas">

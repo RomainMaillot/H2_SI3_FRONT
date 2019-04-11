@@ -15,7 +15,7 @@ export default class User extends Component {
         return (
             <containers.user>
                 <div className="user">
-                    <img src={avatar} />
+                    <img src={avatar} alt={'user avatar'}/>
                     <p>{this.props.id}.</p>
                     <p>{this.props.user}</p>
                 </div>

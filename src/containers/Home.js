@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { texts, buttons, containers } from '../styles';
-import Request from '../utils/Request'
+import { texts, containers } from '../styles';
 import { Form, Start } from '../components'
 import { StoreConsumer } from '../store/MainStore';
 
@@ -11,7 +10,6 @@ export default class Home extends Component {
             error: false,
             isLoged: true
         }
-        const api = new Request()
     }
 
     render() {

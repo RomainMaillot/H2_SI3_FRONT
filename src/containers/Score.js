@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { texts, buttons, containers } from '../styles';
-import Request from '../utils/Request'
-import { Form } from '../components'
 import { StoreConsumer } from '../store/MainStore';
 
 export default class Score extends Component {
@@ -10,7 +8,6 @@ export default class Score extends Component {
         this.state = {
             error: false
         }
-        const api = new Request()
     }
 
     render() {

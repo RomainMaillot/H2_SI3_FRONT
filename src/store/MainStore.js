@@ -12,10 +12,11 @@ const initialState = {
         best_score: null
     },
     game: {
+        loading: true,
         hasstarted: false,
         currentQuestion: 0,
         questions: [],
-        answers: []
+        currentType: null
     }
 }
 
@@ -74,7 +75,6 @@ class StoreProvider extends Component {
 
     deserializeAnswers(_data) {
         let r = []
-        console.log('_data', _data[0].answers)
         for (let i = 0; i < _data.length; i++) {
             const a = JSON.parse(_data[i].answers);
             r.push({
@@ -86,14 +86,50 @@ class StoreProvider extends Component {
         return r
     }
 
-    startGame() {
-        this.setState({
-            ...this.state,
-            game: {
-                ...this.state.game,
-                hasstarted: true,
-                currentQuestion: 0,
-                answers: []
+    saveProgress(_data) {
+        if (_data.answer) {
+            this.setState({
+                ...this.state,
+                game: {
+                    ...this.state.game,
+                    currentQuestion: this.state.game.currentQuestion + 1
+                }
+            })
+            const fd = new FormData()
+            fd.set('type', this.state.game.questions[_data.index].type)
+            fd.set('index', this.state.game.currentQuestion)
+            fd.set('answer', _data.answer)
+            fd.set('userid', this.state.user.id)
+            fd.set('questid', this.state.game.questions[_data.index].id)
+            this.api.post(`saveprogress.php`, fd).then(res => {
+                if (res === 'true') {
+                    return res
+                } else {
+                    console.error('Save failed.')
+                    return { error: true }
+                }
+            })
+        }
+    }
+
+    startGame(_type = 0) {
+        this.api.get(`questions.php?type=${_type}`).then(res => {
+            console.log(_type)
+            console.log(res)
+            if (res.error) {
+                console.error('Unknown error while fetching.')
+            } else {
+                const q = this.deserializeAnswers(res)
+                this.setState({
+                    ...this.state,
+                    game: {
+                        loading: false,
+                        hasstarted: true,
+                        questions: q,
+                        currentQuestion: 0,
+                        currentType: _type
+                    }
+                })
             }
         })
     }
@@ -106,23 +142,7 @@ class StoreProvider extends Component {
     }
 
     componentDidMount() {
-        this.api.get('questions.php').then(res => {
-            if (res.error) {
-                console.error('error while fetching.')
-            } else {
-                const q = this.deserializeAnswers(res)
-                this.setState({
-                    ...this.state,
-                    game: {
-                        hasstarted: false,
-                        questions: q,
-                        currentQuestion: 0,
-                        answers: []
-                    }
-                })
-                console.log(q)
-            }
-        })
+        
     }
 
     render () {
