@@ -80,6 +80,7 @@ const arrow = styled(Link)`
     display: flex;
     position: absolute;
     left: 5%;
+    top: 5px;
 `
 const cross = styled(Link)`
     border: none;

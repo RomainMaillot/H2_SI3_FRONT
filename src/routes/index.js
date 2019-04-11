@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Home, NoMatch, Room, Ranking, Score, Profil } from '../containers/index.js'
+import { Home, NoMatch, Room, Ranking, Score, Profil, Category } from '../containers/index.js'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { StoreConsumer } from '../store/MainStore.js';
 
@@ -16,6 +16,7 @@ export default class Routes extends Component {
                                 <Route exact path="/ranking" component={Ranking} />
                                 <Route exact path="/score" component={Score} />
                                 <Route exact path="/profil" component={Profil} />
+                                <Route exact path="/category" component={Category} />
                             </React.Fragment>
                         : 
                             <Redirect to={'/'} />

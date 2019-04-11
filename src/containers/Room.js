@@ -79,7 +79,7 @@ class Room extends Component {
                             <div className="timer" style={this.state.styles}></div>
                             <main>
                                 {state.game.questions[this.state.iteration].answers.map((a, i) => {
-                                    return <buttons.question key={i} mainColor={this.state.colors[i].p} secondaryColor={this.state.colors[i].s}>{a.content}</buttons.question>
+                                    return <buttons.question key={i} main={this.state.colors[i].p} secondary={this.state.colors[i].s}>{a.content}</buttons.question>
                                 })}
                             </main>
                         </containers.room>

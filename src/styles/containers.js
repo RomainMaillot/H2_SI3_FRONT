@@ -17,6 +17,34 @@ const home = styled.div`
         margin-top: 2%;
     }
 `
+const category = styled.div`
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+    background-color: ${colors.blue};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    >a {
+        height: 10%; 
+    }
+    .categories {
+        width: 85%;
+        margin-top: 10vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        a {
+            width: 35vw;
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+`
 const room = styled.div`
     margin: 0 auto;
     width: 100%;
@@ -235,5 +263,6 @@ export {
     room,
     score,
     start,
-    profil
+    profil,
+    category
 }
