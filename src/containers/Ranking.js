@@ -26,7 +26,7 @@ export default class Ranking extends Component {
     render() {
         return (
             <containers.ranking>
-                <Header title="classement général" />
+                <Header title="ranking" />
                 <div className="users">
                     {!this.state.loading ?
                         this.state.players.map((player, index) => {

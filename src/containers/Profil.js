@@ -18,7 +18,7 @@ export default class Profil extends Component {
             <StoreConsumer>
                 {({state, actions}) => (
                     <containers.profil>
-                        <Header title="profil" />
+                        <Header title="profile" />
                         <div className="user--infos">
                             <div className="img"><img src={avatar} alt={'user avatar'} /></div>
                             <div className="infos">
