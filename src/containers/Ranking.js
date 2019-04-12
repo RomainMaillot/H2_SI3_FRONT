@@ -30,7 +30,7 @@ export default class Ranking extends Component {
                 <div className="users">
                     {!this.state.loading ?
                         this.state.players.map((player, index) => {
-                            return <User id={index + 1} user={player.username} score={player["SUM(progression_1+progression_2)"]} />
+                            return <User id={index + 1} user={player.username} score={player.progression_2} />
                         })
                     :
                         <texts.text>Loading...</texts.text>
