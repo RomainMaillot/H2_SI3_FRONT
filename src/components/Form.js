@@ -22,14 +22,14 @@ export default class Form extends Component {
                 {({state, actions}) => (
                     <containers.form>
                         <label>
-                            <span>Pseudonyme</span>
+                            <span>Pseudo</span>
                             <input type="text" placeholder="Balkhrod" value={this.state.username} onChange={e => this.setState({ username: e.target.value })} />
                         </label>
                         <label>
-                            <span>Mot&nbsp;de&nbsp;passe</span>
+                            <span>Password</span>
                             <input type="password" placeholder="********" value={this.state.password} onChange={e => this.setState({ password: e.target.value })} />
                         </label>
-                        <buttons.input onClick={() => actions.login(this.state)}>S'inscrire/Connexion</buttons.input>
+                        <buttons.input onClick={() => actions.login(this.state)}>Login / Register</buttons.input>
                     </containers.form>
                 )}
             </StoreConsumer>

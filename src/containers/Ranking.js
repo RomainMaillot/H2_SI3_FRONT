@@ -33,7 +33,7 @@ export default class Ranking extends Component {
                             return <User id={index + 1} user={player.username} score={player["SUM(progression_1+progression_2)"]} />
                         })
                     :
-                        <texts.text>Chargement en cours..</texts.text>
+                        <texts.text>Loading...</texts.text>
                     }
                 </div>
             </containers.ranking>

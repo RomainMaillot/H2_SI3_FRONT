@@ -66,13 +66,13 @@ class Room extends Component {
                         <containers.room>
                             {state.game.loading ?
                                 <header style={{height: '100vh'}}>
-                                    <texts.user>Chargement en cours...</texts.user>
+                                    <texts.user>Loading ...</texts.user>
                                     <buttons.cross onClick={() => actions.endGame()} to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
                                 </header>
                             :
                                 <React.Fragment>
                                     <header>
-                                        <texts.user>Joueur : {state.user.username}</texts.user>
+                                        <texts.user>Player : {state.user.username}</texts.user>
                                         <buttons.cross to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
                                     </header>
                                     <texts.title>{`Question n°${state.game.currentQuestion + 1}`}</texts.title>

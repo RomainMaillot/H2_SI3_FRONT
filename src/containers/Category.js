@@ -18,7 +18,7 @@ export default class Category extends Component {
                 {({state, actions}) => (
                     <containers.category>
                         <buttons.arrow to="./"><img src={icon_arrow} alt={'Back to home'} /></buttons.arrow>
-                        <texts.text>Choississez une catégorie</texts.text>
+                        <texts.text>Choose a category</texts.text>
                         <div className="categories">
                             <buttons.link onClick={() => actions.startGame(1)} main="#9B59B6" secondary="#8E44AD" to="./room">
                                 Games of Thrones
