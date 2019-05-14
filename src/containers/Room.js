@@ -41,18 +41,13 @@ class Room extends Component {
                 styles: styles
             })
         }, 100);
-
-        if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1 && this.context.state.game.loading === false) {
-            this.setState({navigate: true})
-        } else {
-            if(this.state.time !== 0) {
-                clearInterval(timer)
-                this.context.actions.saveProgress({answer: false})
-                this.setState({
-                    time: 0,
-                    styles: { transform: `scaleX(${0})` }
-                })
-            }
+        if(this.state.time !== 0) {
+            clearInterval(timer)
+            this.context.actions.saveProgress({answer: false})
+            this.setState({
+                time: 0,
+                styles: { transform: `scaleX(${0})` }
+            })
         }
     }
 
@@ -64,48 +59,45 @@ class Room extends Component {
                 <StoreConsumer>
                     {({state, actions}) => (
                         <containers.room>
-                            {state.game.loading ?
-                                <header style={{height: '100vh'}}>
-                                    <texts.user>Loading ...</texts.user>
-                                    <buttons.cross onClick={() => actions.endGame()} to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
+                            <React.Fragment>
+                                <header>
+                                    <texts.user>Player : Berka</texts.user>
+                                    <buttons.cross to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
                                 </header>
-                            :
-                                <React.Fragment>
-                                    <header>
-                                        <texts.user>Player : {state.user.username}</texts.user>
-                                        <buttons.cross to="./"><img src={icon_cross} alt={'Back to home'} /></buttons.cross>
-                                    </header>
-                                    <texts.title>{`Question n°${state.game.currentQuestion + 1}`}</texts.title>
-                                    <texts.text>{state.game.questions[state.game.currentQuestion].text}</texts.text>
-                                    <div className="timer" style={this.state.styles}></div>
-                                    <main>
-                                        {state.game.questions[state.game.currentQuestion].answers.map((a, i) => {
-                                            return (
-                                                <buttons.question
-                                                    key={i}
-                                                    onClick={() => {
-                                                        this.setState({
-                                                            time: 0,
-                                                            styles: { transform: `scaleX(${0})` }
-                                                        })
-                                                        if(this.context.state.game.currentQuestion >= this.context.state.game.questions.length - 1) {
-                                                            actions.endGame()
-                                                            this.setState({
-                                                                navigate: true,
-                                                                time: 0,
-                                                                styles: { transform: `scaleX(${0})` }
-                                                            })
-                                                        }
-                                                        actions.saveProgress({ answer: a.right })
-                                                    }}
-                                                    main={this.state.colors[i].p}
-                                                    secondary={this.state.colors[i].s}>
-                                                {a.text}</buttons.question>
-                                            )
-                                        })}
-                                    </main>
+                                <texts.title>{`Question n°1`}</texts.title>
+                                <texts.text>Who is leading the House Hightower of the Hightower</texts.text>
+                                <div className="timer" style={this.state.styles}></div>
+                                <main>
+                                    <buttons.question
+                                        onClick={() => {
+                                            this.setState({
+                                                time: 0,
+                                                styles: { transform: `scaleX(${0})` }
+                                            })}}  main={this.state.colors[0].p} secondary={this.state.colors[0].s}>
+                                    Tyrion Lannister</buttons.question>
+                                    <buttons.question
+                                        onClick={() => {
+                                            this.setState({
+                                                time: 0,
+                                                styles: { transform: `scaleX(${0})` }
+                                            })}}  main={this.state.colors[1].p} secondary={this.state.colors[1].s}>
+                                    Tyrion Lannister</buttons.question>
+                                    <buttons.question
+                                        onClick={() => {
+                                            this.setState({
+                                                time: 0,
+                                                styles: { transform: `scaleX(${0})` }
+                                            })}}  main={this.state.colors[2].p} secondary={this.state.colors[2].s}>
+                                    Tyrion Lannister</buttons.question>
+                                    <buttons.question
+                                        onClick={() => {
+                                            this.setState({
+                                                time: 0,
+                                                styles: { transform: `scaleX(${0})` }
+                                            })}}  main={this.state.colors[3].p} secondary={this.state.colors[3].s}>
+                                    Tyrion Lannister</buttons.question>
+                                </main>
                                 </React.Fragment>
-                            }
                         </containers.room>
                     )}
                 </StoreConsumer>

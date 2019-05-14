@@ -8,19 +8,8 @@ export default class Ranking extends Component {
         super(props);
         this.state = {
             loading: true,
-            players: []
+            players: [{username: 'Berka', progression_2: 105},{username: 'Berka', progression_2: 105},{username: 'Berka', progression_2: 105},{username: 'Berka', progression_2: 105}]
         }
-    }
-
-    componentDidMount() {
-        const api = new Request();
-        api.get('leaderboard.php').then(res => {
-            this.setState({
-                loading: false,
-                players: res
-            })
-            console.log(res)
-        })
     }
 
     render() {
@@ -28,13 +17,9 @@ export default class Ranking extends Component {
             <containers.ranking>
                 <Header title="ranking" />
                 <div className="users">
-                    {!this.state.loading ?
-                        this.state.players.map((player, index) => {
+                        {this.state.players.map((player, index) => {
                             return <User id={index + 1} user={player.username} score={player.progression_2} />
-                        })
-                    :
-                        <texts.text>Loading...</texts.text>
-                    }
+                    })}
                 </div>
             </containers.ranking>
         )

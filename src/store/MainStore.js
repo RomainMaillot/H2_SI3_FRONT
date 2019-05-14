@@ -6,7 +6,7 @@ const StoreConsumer = StoreContext.Consumer
 
 const initialState = {
     user: {
-        isloggedin: false,
+        isloggedin: true,
         id: null,
         username: null,
         progression_1: null,
@@ -94,34 +94,34 @@ class StoreProvider extends Component {
     }
 
     saveProgress(_data) {
-        let s_inc = 0
-        if (_data.answer == true) {
-            s_inc = 1
-        }
-        if (_data.answer !== undefined) {
-            console.log( parseInt(this.state.game.trueAnswers))
-            this.setState({
-                ...this.state,
-                game: {
-                    ...this.state.game,
-                    currentQuestion: this.state.game.currentQuestion + 1,
-                    trueAnswers: parseInt(this.state.game.trueAnswers + s_inc)
-                }
-            })
-            const fd = new FormData()
-            fd.set('type', this.state.game.questions[this.state.game.currentQuestion].type)
-            fd.set('answer', s_inc)
-            fd.set('userid', this.state.user.id)
-            this.api.post(`saveprogress.php`, fd).then(res => {
-                console.log('ta', res)
-                if (res === true) {
-                    return res
-                } else {
-                    console.error('Save failed.')
-                    return { error: true }
-                }
-            })
-        }
+        // let s_inc = 0
+        // if (_data.answer == true) {
+        //     s_inc = 1
+        // }
+        // if (_data.answer !== undefined) {
+        //     console.log( parseInt(this.state.game.trueAnswers))
+        //     this.setState({
+        //         ...this.state,
+        //         game: {
+        //             ...this.state.game,
+        //             currentQuestion: this.state.game.currentQuestion + 1,
+        //             trueAnswers: parseInt(this.state.game.trueAnswers + s_inc)
+        //         }
+        //     })
+        //     const fd = new FormData()
+        //     fd.set('type', this.state.game.questions[this.state.game.currentQuestion].type)
+        //     fd.set('answer', s_inc)
+        //     fd.set('userid', this.state.user.id)
+        //     this.api.post(`saveprogress.php`, fd).then(res => {
+        //         console.log('ta', res)
+        //         if (res === true) {
+        //             return res
+        //         } else {
+        //             console.error('Save failed.')
+        //             return { error: true }
+        //         }
+        //     })
+        // }
     }
 
     startGame(_type = 0) {
